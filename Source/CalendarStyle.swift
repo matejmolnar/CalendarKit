@@ -73,24 +73,28 @@ public class DaySelectorStyle: NSCopying {
 public class DaySymbolsStyle: NSCopying {
   public var weekendColor = UIColor.lightGray
   public var weekDayColor = UIColor.black
+  public var backgroundColor = UIColor.clear
   public var font = UIFont.systemFont(ofSize: 10)
   public init() {}
   public func copy(with zone: NSZone? = nil) -> Any {
     let copy = DaySymbolsStyle()
     copy.weekendColor = weekendColor
     copy.weekDayColor = weekDayColor
+    copy.backgroundColor = backgroundColor
     copy.font = font
     return copy
   }
 }
 
 public class SwipeLabelStyle: NSCopying {
+  public var enabled = true
   public var textColor = UIColor.black
   public var font = UIFont.systemFont(ofSize: 15)
   public init() {}
   public func copy(with zone: NSZone? = nil) -> Any {
     let copy = SwipeLabelStyle()
     copy.textColor = textColor
+    copy.enabled = enabled
     copy.font = font
     return copy
   }

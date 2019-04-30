@@ -44,7 +44,8 @@ class DaySymbolsView: UIView {
     var weekDays = Array(zip(daySymbols, weekendMask))
 
     weekDays.shift(calendar.firstWeekday - 1)
-
+    backgroundColor = style.backgroundColor
+    
     for (index, label) in labels.enumerated() {
       label.text = weekDays[index].0
       label.textColor = weekDays[index].1 ? style.weekendColor : style.weekDayColor

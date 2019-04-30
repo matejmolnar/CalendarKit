@@ -23,7 +23,7 @@ public class DayHeaderView: UIView {
 
   var daySymbolsViewHeight: CGFloat = 20
   var pagingScrollViewHeight: CGFloat = 40
-  var swipeLabelViewHeight: CGFloat = 20
+  static let swipeLabelViewHeight: CGFloat = 20
 
   lazy var daySymbolsView: DaySymbolsView = DaySymbolsView(daysInWeek: self.daysInWeek)
   let pagingScrollView = PagingScrollView<DaySelector>()
@@ -77,6 +77,7 @@ public class DayHeaderView: UIView {
     pagingScrollView.reusableViews.forEach { daySelector in
       daySelector.updateStyle(style.daySelector)
     }
+    isHidden = !style.enabled
     backgroundColor = style.backgroundColor
   }
 
@@ -86,7 +87,7 @@ public class DayHeaderView: UIView {
     pagingScrollView.contentSize = CGSize(width: bounds.size.width * CGFloat(pagingScrollView.reusableViews.count), height: 0)
     daySymbolsView.anchorAndFillEdge(.top, xPad: 0, yPad: 0, otherSize: daySymbolsViewHeight)
     pagingScrollView.alignAndFillWidth(align: .underCentered, relativeTo: daySymbolsView, padding: 0, height: pagingScrollViewHeight)
-    swipeLabelView.anchorAndFillEdge(.bottom, xPad: 0, yPad: 10, otherSize: swipeLabelViewHeight)
+    swipeLabelView.anchorAndFillEdge(.bottom, xPad: 0, yPad: 10, otherSize: DayHeaderView.swipeLabelViewHeight)
   }
 
   public func transitionToHorizontalSizeClass(_ sizeClass: UIUserInterfaceSizeClass) {

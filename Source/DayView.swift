@@ -39,7 +39,13 @@ public class DayView: UIView {
   }
 
   static let headerVisibleHeight: CGFloat = 88
-  var headerHeight: CGFloat = headerVisibleHeight
+    var headerHeight: CGFloat {
+        if style.header.swipeLabel.enabled {
+            return headerVisibleHeight
+        } else {
+            return headerVisibleHeight - DayHeaderView.swipeLabelViewHeight
+        }
+    }
 
   open var autoScrollToFirstEvent: Bool {
     get {
